@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <headerVue @todo = "setTodo"></headerVue>
-      <contentVue v-bind:todo-data="todoData"></contentVue>
+      <contentVue v-bind:todoData="todoDatas" ></contentVue>
       <footerVue></footerVue>
   </div>
 </template>
@@ -21,13 +21,15 @@ export default {
   },
   data(){
     return{
-      todoData : ""
+      todoDatas : []
     }
   },
   methods:{
     setTodo:function(value){
-      this.todoData = value;
-      console.log(value);
+      this.todoDatas.push(value);
+    },
+    removeTodo:function(index){
+      this.todoDatas.splice(index, 1);
     }
   }
 }
